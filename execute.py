@@ -20,7 +20,7 @@ atl2 = {'name':'atl_00', 'tribe':'atlanteans', 'attack':0, 'defense':0, 'evade':
 atl7 = {'name':'atl_00', 'tribe':'atlanteans', 'attack':2, 'defense':1, 'evade':2, 'health':0} #promoted only for iron
 atl10 = {'name':'atl_10', 'tribe':'atlanteans', 'attack':4, 'defense':2, 'evade':2, 'health':1} #fully promoted soldier
 
-list_to_test = [bar0, emp0, atl0]
+list_to_test = [bar10, emp10, atl10]
 number_of_tests = 10000
 
 stats = simulation.statistics()

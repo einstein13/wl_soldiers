@@ -1,5 +1,12 @@
 import soldiers
 
+def round(number, points):
+    base = 10**points
+    bigger = number*base
+    if bigger - int(bigger) >= 0.5:
+        bigger += 1
+    return 1.0 * int(bigger)/base
+
 class one_fight():
     soldier1 = ""
     soldier2 = ""
@@ -89,7 +96,22 @@ class statistics():
 
     def print_results(self):
         length = len(self.dictionaries_list)
+        string = "| vs."
         for itr1 in range(length):
-            for itr2 in range(length):
-                print(str(itr1)+"\t"+str(itr2)+"\t"+str(self.result_matrix[itr1][itr2]))
+            string += " | "+self.dictionaries_list[itr1]['name']
+        string += " |\n"
+        for itr1 in range(-1, length):
+            string += "| --- "
+        string += "|\n"
+        for itr1 in range(length):
+            for itr2 in range(-1,length):
+                if itr2 == -1:
+                    string += "| " + self.dictionaries_list[itr1]['name']
+                else:
+                    string += " | " + str(round(self.result_matrix[itr1][itr2],1)) + "%"
+            string += " |\n"
+        print(string)
+        file = open("out.txt","w")
+        file.write(string)
+        file.close()
         return 0
