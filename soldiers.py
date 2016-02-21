@@ -42,7 +42,7 @@ class soldier():
     def form_defence(self, attack):
         # return: True - still alive, False - killed
         rand_evade = random.uniform(0.0, 1.0)
-        if rand_evade < self.evade:
+        if rand_evade > self.evade:
             return True
         self.health -= attack * self.defense
         return self.is_alive()
