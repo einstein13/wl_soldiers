@@ -6,14 +6,14 @@ import simulation
 bar0 = {'name':'bar_00', 'tribe':'barbarians', 'attack':0, 'defense':0, 'evade':0, 'health':0} #not promoted soldier
 bar2 = {'name':'bar_02', 'tribe':'barbarians', 'attack':0, 'defense':0, 'evade':2, 'health':0} #promoted only for food
 bar7 = {'name':'bar_07', 'tribe':'barbarians', 'attack':3, 'defense':0, 'evade':2, 'health':2} #promoted only for iron
-bar9 = {'name':'bar_9', 'tribe':'barbarians', 'attack':5, 'defense':0, 'evade':2, 'health':2} #without last promotion
+bar9 = {'name':'bar_09', 'tribe':'barbarians', 'attack':5, 'defense':0, 'evade':2, 'health':2} #without last promotion
 bar10 = {'name':'bar_10', 'tribe':'barbarians', 'attack':5, 'defense':0, 'evade':2, 'health':3} #fully promoted soldier
 
 #Empire
 emp0 = {'name':'emp_00', 'tribe':'empire', 'attack':0, 'defense':0, 'evade':0, 'health':0} #not promoted soldier
 emp2 = {'name':'emp_02', 'tribe':'empire', 'attack':0, 'defense':0, 'evade':2, 'health':0} #promoted only for food
 emp7 = {'name':'emp_07', 'tribe':'empire', 'attack':2, 'defense':0, 'evade':2, 'health':3} #promoted only for iron
-emp9 = {'name':'emp_9', 'tribe':'empire', 'attack':4, 'defense':0, 'evade':2, 'health':3} #without last promotion
+emp9 = {'name':'emp_09', 'tribe':'empire', 'attack':4, 'defense':0, 'evade':2, 'health':3} #without last promotion
 emp10 = {'name':'emp_10', 'tribe':'empire', 'attack':4, 'defense':0, 'evade':2, 'health':4} #fully promoted soldier
 
 #Atlanteans
