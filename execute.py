@@ -24,9 +24,7 @@ atl9 = {'name':'atl_09', 'tribe':'atlanteans', 'attack':4, 'defense':1, 'evade':
 atl10 = {'name':'atl_10', 'tribe':'atlanteans', 'attack':4, 'defense':2, 'evade':2, 'health':1} #fully promoted soldier
 
 list_to_test = [bar0, bar2, bar7, bar10, emp0, emp2, emp7, emp10, atl0, atl2, atl7, atl10]
-list_to_test = [bar9, bar10, emp9, emp10, atl9, atl10]
-#list_to_test = [bar10, emp10, atl10]
-number_of_tests = 10**6
+list_to_test = [bar2, bar9, bar10, emp2, emp9, emp10, atl2, atl9, atl10]
 number_of_tests = 10**5
 
 stats = simulation.statistics()

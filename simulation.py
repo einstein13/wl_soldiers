@@ -34,11 +34,15 @@ class one_fight():
         result = 0
         while result == 0:
             result = self.simulation_step()
+        result = [result, self.soldier1.health, self.soldier2.health]
         return result
+
 
 class main_simulation():
     soldier1_wins = 0
     soldier2_wins = 0
+    attackers_healt = 0.0
+    defenders_healts = 0.0
     
     def simulate(self, soldier1_dict, soldier2_dict, number_of_fights):
         self.soldier1_wins = 0
@@ -50,14 +54,25 @@ class main_simulation():
             figth = ""
             figth = one_fight()
             result = figth.simulate(soldier1_dict, soldier2_dict)
-            if result == 1:
+            if result[0] == 1:
                 self.soldier2_wins += 1
-            elif result == 2:
+            elif result[0] == 2:
                 self.soldier1_wins += 1
-        return 1.0 * self.soldier1_wins / number_of_fights
+            self.attackers_healt += result[1]
+            self.defenders_healts += result[2]
+        soldiers = one_fight()
+        soldiers.define_soldiers(soldier1_dict, soldier2_dict)
+        result = [
+            1.0 * self.soldier1_wins / number_of_fights,
+            self.attackers_healt / number_of_fights / soldiers.soldier1.health,
+            self.defenders_healts / number_of_fights / soldiers.soldier2.health
+            ]
+        return result
 
 class statistics():
     result_matrix = []
+    attackers_healts = []
+    defenders_healts = []
     dictionaries_list = []
     
     def add_soldiers_definitions(self, dictionary_or_list):
@@ -73,16 +88,23 @@ class statistics():
         self.result_matrix = []
         for itr1 in range(length):
             self.result_matrix.append([])
+            self.attackers_healts.append([])
+            self.defenders_healts.append([])
             for itr2 in range(length):
                 self.result_matrix[itr1].append(0.0)
+                self.attackers_healts[itr1].append(0.0)
+                self.defenders_healts[itr1].append(0.0)
         return 0
 
     def simulate_one(self, soldier1, soldier2, number_of_fights):
         simulation = main_simulation()
         dict1 = self.dictionaries_list[soldier1]
         dict2 = self.dictionaries_list[soldier2]
-        result = 100.0*simulation.simulate(dict1, dict2, number_of_fights)
-        self.result_matrix[soldier1][soldier2] = result
+        result = simulation.simulate(dict1, dict2, number_of_fights)
+        result = [x * 100 for x in result]
+        self.result_matrix[soldier1][soldier2] = result[0]
+        self.attackers_healts[soldier1][soldier2] = result[1]
+        self.defenders_healts[soldier1][soldier2] = result[2]
         return result
 
     def simulate_all(self, number_of_fights):
@@ -91,10 +113,16 @@ class statistics():
         for itr1 in range(length):
             for itr2 in range(length):
                 res = self.simulate_one(itr1, itr2, number_of_fights)
-                print(str(self.dictionaries_list[itr1]['name'])+" vs. "+str(self.dictionaries_list[itr2]['name'])+"\t"+str(res)+"%")
+                string = str(self.dictionaries_list[itr1]['name'])
+                string += " vs. "
+                string += str(self.dictionaries_list[itr2]['name'])
+                string += "\t"+str(res[0])+"%"
+                string += "\tAT_hp="+str(round(res[1],4))+"%"
+                string += "\tDF_hp="+str(round(res[2],4))+"%"
+                print(string)
         return 0
 
-    def print_results(self):
+    def markdown_table(self, matrix):
         length = len(self.dictionaries_list)
         string = "| vs."
         for itr1 in range(length):
@@ -108,9 +136,18 @@ class statistics():
                 if itr2 == -1:
                     string += "| " + self.dictionaries_list[itr1]['name']
                 else:
-                    string += " | " + str(round(self.result_matrix[itr1][itr2],1)) + "%"
+                    string += " | " + str(round(matrix[itr1][itr2],1)) + "%"
             string += " |\n"
-        print(string)
+        return string
+
+    def print_results(self):
+        string = "Battles win:\n"
+        string += self.markdown_table(self.result_matrix)
+        string += "\nAttackers health:\n"
+        string += self.markdown_table(self.attackers_healts)
+        string += "\nDefenders health:\n"
+        string += self.markdown_table(self.defenders_healts)
+        print("\n"+string)
         file = open("out.txt","w")
         file.write(string)
         file.close()

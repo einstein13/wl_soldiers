@@ -45,7 +45,10 @@ class soldier():
         if rand_evade > self.evade:
             return True
         self.health -= attack * self.defense
-        return self.is_alive()
+        if self.is_alive():
+            return True
+        self.health = 0.0
+        return False
 
     def attack_enemy(self, enemy_soldier):
         attack_force = self.form_attack()
