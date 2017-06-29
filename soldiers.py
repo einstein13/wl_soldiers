@@ -16,6 +16,8 @@ class soldier():
             self.tribe = 2
         elif tribe_name == "atlanteans" or tribe_name == "Atlanteans":
             self.tribe = 3
+        elif tribe_name == "frisians" or tribe_name == "Frisians":
+            self.tribe = 4
         return 0
 
     def set_stats(self, dict):

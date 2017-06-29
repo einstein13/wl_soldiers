@@ -62,11 +62,16 @@ class main_simulation():
             self.defenders_healts += result[2]
         soldiers = one_fight()
         soldiers.define_soldiers(soldier1_dict, soldier2_dict)
-        result = [
-            1.0 * self.soldier1_wins / number_of_fights,
-            self.attackers_healt / number_of_fights / soldiers.soldier1.health,
-            self.defenders_healts / number_of_fights / soldiers.soldier2.health
-            ]
+
+        stat_1 = 1.0 * self.soldier1_wins / number_of_fights
+        stat_2 = 0.0
+        if self.attackers_healt > 0.0:
+            stat_2 = self.attackers_healt / number_of_fights / soldiers.soldier1.health
+        stat_3 = 0.0
+        if self.defenders_healts > 0.0:
+            stat_3 = self.defenders_healts / number_of_fights / soldiers.soldier2.health
+
+        result = [stat_1, stat_2, stat_3]
         return result
 
 class statistics():

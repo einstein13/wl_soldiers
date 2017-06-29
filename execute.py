@@ -20,12 +20,19 @@ emp10 = {'name':'emp_10', 'tribe':'empire', 'attack':4, 'defense':0, 'evade':2, 
 atl0 = {'name':'atl_00', 'tribe':'atlanteans', 'attack':0, 'defense':0, 'evade':0, 'health':0} #not promoted soldier
 atl2 = {'name':'atl_02', 'tribe':'atlanteans', 'attack':0, 'defense':0, 'evade':2, 'health':0} #promoted only for food
 atl7 = {'name':'atl_07', 'tribe':'atlanteans', 'attack':2, 'defense':1, 'evade':2, 'health':0} #promoted only for iron
+atl8 = {'name':'atl_08', 'tribe':'atlanteans', 'attack':4, 'defense':0, 'evade':2, 'health':1} #without last promotion
 atl9 = {'name':'atl_09', 'tribe':'atlanteans', 'attack':4, 'defense':1, 'evade':2, 'health':1} #without last promotion
 atl10 = {'name':'atl_10', 'tribe':'atlanteans', 'attack':4, 'defense':2, 'evade':2, 'health':1} #fully promoted soldier
 
-list_to_test = [bar0, bar2, bar7, bar10, emp0, emp2, emp7, emp10, atl0, atl2, atl7, atl10]
-list_to_test = [bar2, bar9, bar10, emp2, emp9, emp10, atl2, atl9, atl10]
-number_of_tests = 10**5
+#Frisians
+fri0 = {'name': 'fri_00', 'tribe': 'frisians', 'attack': 0, 'defense': 0, 'evade': 0, 'health': 0}
+fri10 = {'name': 'fri_10', 'tribe': 'frisians', 'attack': 6, 'defense': 2, 'evade': 0, 'health': 2}
+
+#list_to_test = [bar0, bar2, bar7, bar10, emp0, emp2, emp7, emp10, atl0, atl2, atl7, atl10]
+list_to_test = [bar10, emp10, atl10, fri10]
+# list_to_test = [bar0, bar10]
+number_of_tests = 10**6
+# number_of_tests = 3
 
 stats = simulation.statistics()
 stats.add_soldiers_definitions(list_to_test)
