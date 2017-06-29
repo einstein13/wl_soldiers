@@ -16,7 +16,7 @@ def get_min_attack(tribe=1, level=0):
     elif tribe == 4:
         if level > 6:
             return 0
-        return 15.0+10.0*level
+        return 13.0+10.0*level
     return 0
 
 def get_max_attack(tribe=1, level=0):
@@ -37,7 +37,7 @@ def get_max_attack(tribe=1, level=0):
     elif tribe == 4:
         if level > 6:
             return 0
-        return 19.0+10.0*level
+        return 15.0+10.0*level
     return 0
 
 def get_defense(tribe=1, level=0):
@@ -58,7 +58,7 @@ def get_defense(tribe=1, level=0):
     elif tribe == 4:
         if level > 2:
             return 0
-        return 1.0 - (0.05 + 0.05*level)
+        return 1.0 - (0.05 + 0.20*level)
     return 0
 
 def get_evade(tribe=1, level=0):

@@ -31,7 +31,7 @@ fri10 = {'name': 'fri_10', 'tribe': 'frisians', 'attack': 6, 'defense': 2, 'evad
 #list_to_test = [bar0, bar2, bar7, bar10, emp0, emp2, emp7, emp10, atl0, atl2, atl7, atl10]
 list_to_test = [bar10, emp10, atl10, fri10]
 # list_to_test = [bar0, bar10]
-number_of_tests = 10**6
+number_of_tests = 10**5
 # number_of_tests = 3
 
 stats = simulation.statistics()
