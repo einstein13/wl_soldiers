@@ -39,7 +39,7 @@ class soldier():
         return self.health > 0
 
     def form_attack(self):
-        return random.randint(self.attack_min*1000, self.attack_max*1000)/1000.0
+        return random.randint(round(self.attack_min*1000), round(self.attack_max*1000))/1000.0
 
     def form_defence(self, attack):
         # return: True - still alive, False - killed
